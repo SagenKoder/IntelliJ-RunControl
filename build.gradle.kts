@@ -34,6 +34,12 @@ intellijPlatform {
         }
     }
 
+    pluginVerification {
+        ides {
+            recommended()
+        }
+    }
+
     signing {
         // Configure via environment variables or gradle.properties
         certificateChain = providers.environmentVariable("CERTIFICATE_CHAIN")
