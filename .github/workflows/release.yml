@@ -1,0 +1,41 @@
+name: Release Plugin
+
+on:
+  release:
+    types: [created]
+  workflow_dispatch:
+
+jobs:
+  release:
+    name: Publish to JetBrains Marketplace
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      - name: Build Plugin
+        run: ./gradlew buildPlugin
+
+      - name: Sign Plugin
+        run: ./gradlew signPlugin
+        env:
+          CERTIFICATE_CHAIN: ${{ secrets.CERTIFICATE_CHAIN }}
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          PRIVATE_KEY_PASSWORD: ${{ secrets.PRIVATE_KEY_PASSWORD }}
+
+      - name: Upload Signed Plugin ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: IntelliJ-RunControl-${{ github.ref_name }}
+          path: build/distributions/*-signed.zip
+          retention-days: 90

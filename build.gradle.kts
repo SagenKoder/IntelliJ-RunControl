@@ -33,6 +33,19 @@ intellijPlatform {
             untilBuild = "253.*"
         }
     }
+
+    signing {
+        // Configure via environment variables or gradle.properties
+        certificateChain = providers.environmentVariable("CERTIFICATE_CHAIN")
+        privateKey = providers.environmentVariable("PRIVATE_KEY")
+        password = providers.environmentVariable("PRIVATE_KEY_PASSWORD")
+    }
+
+    publishing {
+        token = providers.environmentVariable("PUBLISH_TOKEN")
+        // Optional: Use channels for staged releases
+        // channels = listOf("beta")
+    }
 }
 
 tasks {
