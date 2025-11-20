@@ -1,7 +1,7 @@
 plugins {
     id("java")
     id("org.jetbrains.kotlin.jvm") version "2.1.0"
-    id("org.jetbrains.intellij.platform") version "2.2.1"
+    id("org.jetbrains.intellij.platform") version "2.10.4"
 }
 
 group = "app.sagen"
@@ -32,6 +32,26 @@ intellijPlatform {
             sinceBuild = "241"
             untilBuild = "253.*"
         }
+    }
+
+    pluginVerification {
+        ides {
+            ide("IC-2024.1.6")
+            ide("IC-2024.2.4")
+        }
+    }
+
+    signing {
+        // Configure via environment variables or gradle.properties
+        certificateChain = providers.environmentVariable("CERTIFICATE_CHAIN")
+        privateKey = providers.environmentVariable("PRIVATE_KEY")
+        password = providers.environmentVariable("PRIVATE_KEY_PASSWORD")
+    }
+
+    publishing {
+        token = providers.environmentVariable("PUBLISH_TOKEN")
+        // Optional: Use channels for staged releases
+        // channels = listOf("beta")
     }
 }
 

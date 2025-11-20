@@ -27,3 +27,9 @@ Thumbs.db
 
 # Plugin distribution
 *.zip
+
+# Signing certificates (NEVER COMMIT)
+*.key
+*.crt
+*.csr
+*.pem
