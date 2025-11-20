@@ -1,0 +1,58 @@
+<idea-plugin>
+    <id>app.sagen.runcontrol</id>
+    <name>RunControl</name>
+    <vendor email="sagenkoder@users.noreply.github.com" url="https://github.com/SagenKoder">SagenKoder</vendor>
+
+    <description><![CDATA[
+    <p>RunControl provides a localhost HTTP API for controlling IntelliJ IDEA run configurations programmatically.</p>
+    <p>This enables external tools (MCP servers, CLI tools, automation scripts) to:</p>
+    <ul>
+        <li>List all run configurations</li>
+        <li>Check the status of running configurations</li>
+        <li>Execute actions: run, debug, stop, restart</li>
+    </ul>
+    <p>The API is secured with a token and only accessible from localhost.</p>
+    ]]></description>
+
+    <change-notes><![CDATA[
+    <h3>1.0.0</h3>
+    <ul>
+        <li>Initial release</li>
+        <li>HTTP API for run configuration management</li>
+        <li>Support for run, debug, stop, restart actions</li>
+        <li>Real-time status detection</li>
+        <li>Token-based authentication</li>
+    </ul>
+    ]]></change-notes>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Application-level settings storage -->
+        <applicationService
+                serviceImplementation="app.sagen.runcontrol.settings.RunControlSettings"/>
+
+        <!-- Project-level service for run configuration operations -->
+        <projectService
+                serviceImplementation="app.sagen.runcontrol.service.RunConfigService"/>
+
+        <!-- Project-level service for log operations -->
+        <projectService
+                serviceImplementation="app.sagen.runcontrol.service.LogService"/>
+
+        <!-- Settings UI -->
+        <applicationConfigurable
+                parentId="tools"
+                instance="app.sagen.runcontrol.settings.RunControlSettingsConfigurable"
+                id="app.sagen.runcontrol.settings.RunControlSettingsConfigurable"
+                displayName="RunControl"/>
+    </extensions>
+
+    <applicationListeners>
+        <!-- Start HTTP server on application startup -->
+        <listener
+                class="app.sagen.runcontrol.server.RunControlStartupListener"
+                topic="com.intellij.ide.AppLifecycleListener"/>
+    </applicationListeners>
+</idea-plugin>

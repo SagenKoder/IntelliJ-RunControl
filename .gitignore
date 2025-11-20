@@ -1,0 +1,29 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+.intellijPlatform/
+
+# Gradle
+.gradle/
+build/
+gradle-app.setting
+!gradle-wrapper.jar
+
+# Build outputs
+/build/
+/out/
+
+# Plugin sandbox
+/build/idea-sandbox/
+
+# Mac
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Plugin distribution
+*.zip
