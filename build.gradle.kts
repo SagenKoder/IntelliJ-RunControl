@@ -1,7 +1,7 @@
 plugins {
     id("java")
     id("org.jetbrains.kotlin.jvm") version "2.1.0"
-    id("org.jetbrains.intellij.platform") version "2.2.1"
+    id("org.jetbrains.intellij.platform") version "2.10.4"
 }
 
 group = "app.sagen"
@@ -36,7 +36,8 @@ intellijPlatform {
 
     pluginVerification {
         ides {
-            recommended()
+            ide("IC-2024.1.6")
+            ide("IC-2024.2.4")
         }
     }
 
