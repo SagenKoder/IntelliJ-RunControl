@@ -25,7 +25,7 @@ Perfect for MCP servers, CLI tools, and automation scripts.
 
 ### Installation
 
-1. Download [IntelliJ-RunControl-1.0.2.zip](build/distributions/IntelliJ-RunControl-1.0.2.zip)
+1. Download [IntelliJ-RunControl-1.0.3.zip](build/distributions/IntelliJ-RunControl-1.0.3.zip)
 2. **Settings → Plugins → ⚙️ → Install Plugin from Disk**
 3. Restart IntelliJ IDEA
 4. **Settings → Tools → RunControl** - copy your API token
@@ -218,7 +218,7 @@ cd IntelliJ-RunControl
 ./gradlew buildPlugin
 ```
 
-Output: `build/distributions/IntelliJ-RunControl-1.0.2.zip`
+Output: `build/distributions/IntelliJ-RunControl-1.0.3.zip`
 
 ---
 
