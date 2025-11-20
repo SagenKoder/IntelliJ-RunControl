@@ -17,7 +17,7 @@ repositories {
 dependencies {
     implementation("org.eclipse.jetty:jetty-server:11.0.20")
     implementation("org.eclipse.jetty:jetty-servlet:11.0.20")
-    implementation("jakarta.servlet:jakarta.servlet-api:5.0.0")
+    implementation("jakarta.servlet:jakarta.servlet-api:6.1.0")
     implementation("com.google.code.gson:gson:2.10.1")
 
     intellijPlatform {
